@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: wisecow-container
-        image: <your-docker-registry>/wisecow:latest
+        image: tanu3693/wisecow:latest
         ports:
         - containerPort: 3000
 service.yaml:
