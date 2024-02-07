@@ -1,11 +1,5 @@
-FROM node:14
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
+FROM bash
+WORKDIR /tanayaproject
+COPY wisecow.sh .
 COPY . .
-
-CMD ["npm", "start"]
+CMD ["bash", "/wisecow.sh"]
