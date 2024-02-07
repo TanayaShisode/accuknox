@@ -17,19 +17,3 @@ spec:
         image: tanu3693/wisecow:latest
         ports:
         - containerPort: 3000
-service.yaml:
-
-yaml
-Copy code
-apiVersion: v1
-kind: Service
-metadata:
-  name: wisecow-service
-spec:
-  selector:
-    app: wisecow
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
-  type: LoadBalancer
