@@ -1,31 +1,20 @@
-name: Build and Deploy
+name: Docker Image CI
+
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
-  build-and-deploy:
+
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set up Docker
-      uses: docker/setup-docker@v2
-
-    - name: Build Docker Image
-      run: docker build .
-
-    - name: Push Docker Image
-      run: |
-        echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        docker push your-registry/your-repo:latest
-
-    - name: Deploy to Kubernetes
-      uses: azure/k8s-set-context@v1
-      with:
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
-        enableCli: true
-        version: 'v1.20.0'
-      run: kubectl apply -f k8s/
-
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build --tag tanu3693/dockershellimage
+      run: docker login -u tanu3693 -p dckr_pat_2mEGEbevOC_JLAkZRyq7dejS87s
+      run: docker push tanu3693/dockershellimage
