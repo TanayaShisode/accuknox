@@ -7,14 +7,13 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: Build the Docker image
-      run: docker build --tag tanu3693/dockershellimage
-      run: docker login -u tanu3693 -p dckr_pat_2mEGEbevOC_JLAkZRyq7dejS87s
-      run: docker push tanu3693/dockershellimage
+      run: |
+        docker build --tag tanu3693/dockershellimage .
+        docker login -u tanu3693 -p ${{ secrets.DOCKER_PASSWORD }}
