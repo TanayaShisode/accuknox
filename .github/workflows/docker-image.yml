@@ -17,3 +17,4 @@ jobs:
       run: |
         docker build --tag tanu3693/dockershellimage .
         docker login -u tanu3693 -p ${{ secrets.DOCKER_PASSWORD }}
+        docker push tanu3693/dockershellimage
