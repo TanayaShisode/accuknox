@@ -16,4 +16,4 @@ spec:
       - name: wisecow-container
         image: tanu3693/wisecow:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 4499
